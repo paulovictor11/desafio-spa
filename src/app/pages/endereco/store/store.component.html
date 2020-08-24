@@ -1,0 +1,51 @@
+<div style="padding-top: 5%;">
+    <nz-card style="width: 80%; margin-left: auto; margin-right: auto;" [nzBordered]="true" nzTitle="Novo Endereço" [nzExtra]="extraTemplate">
+        <form nz-form [formGroup]="modelForm">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira o cep">
+                    <input nz-input formControlName="cep" placeholder="Cep" (change)="getCep(modelForm.get('cep').value)" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira um endereço">
+                    <input nz-input formControlName="endereco" placeholder="Endereço" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira o número">
+                    <input nz-input formControlName="numero" placeholder="Número" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira o complemento">
+                    <input nz-input formControlName="complemento" placeholder="Complemente" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira o bairro">
+                    <input nz-input formControlName="bairro" placeholder="Bairro" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira a cidade">
+                    <input nz-input formControlName="cidade" placeholder="Cidade" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira o estado">
+                    <input nz-input formControlName="estado" placeholder="Estado" />
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </nz-card>
+    <ng-template #extraTemplate>
+        <button nz-button nzType="default" routerLink="../">Voltar</button>
+        <button style="margin-left: 10px;" nz-button nzType="primary" (click)="store(modelForm.value)">Salvar</button>
+    </ng-template>
+</div>

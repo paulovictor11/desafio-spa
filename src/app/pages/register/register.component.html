@@ -1,0 +1,31 @@
+<div style="padding-top: 10%;">
+    <nz-card style="width: 500px; margin-left: auto; margin-right: auto;" [nzBordered]="true" nzTitle="Cadastrar" [nzExtra]="extraTemplate">
+        <form nz-form [formGroup]="modelForm" class="login-form" (ngSubmit)="register(modelForm.value)">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor, insira seu nome!">
+                    <nz-input-group nzPrefixIcon="user">
+                        <input type="text" nz-input formControlName="name" placeholder="Nome" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor, insira seu email!">
+                    <nz-input-group nzPrefixIcon="mail">
+                        <input type="text" nz-input formControlName="email" placeholder="Email" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor insira sua senha!">
+                    <nz-input-group nzPrefixIcon="lock">
+                        <input type="password" nz-input formControlName="password" placeholder="Senha" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <button nz-button [nzType]="'primary'">Cadastrar</button>
+        </form>
+    </nz-card>
+    <ng-template #extraTemplate>
+        <button nz-button nzType="default" routerLink="/login">Voltar</button>
+    </ng-template>
+</div>

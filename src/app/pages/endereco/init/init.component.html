@@ -1,0 +1,55 @@
+<div style="padding-top: 5%;">
+    <nz-card style="width: 80%; margin-left: auto; margin-right: auto;" [nzBordered]="true" nzTitle="Endereços" [nzExtra]="extraTemplate">
+
+        <div *ngIf="progress; else elseBlock">
+            <p><i>Carregando...</i></p>
+        </div>
+        <ng-template #elseBlock>
+            <div style="margin-bottom: 10px;">
+                <nz-input-group [nzSuffix]="suffixIconSearch">
+                    <input type="text" nz-input placeholder="Pesquisar..." [(ngModel)]="pesquisar" />
+                </nz-input-group>
+                <ng-template #suffixIconSearch>
+                    <i nz-icon nzType="search"></i>
+                </ng-template>
+            </div>
+    
+            <nz-table #modelTable [nzData]="model">
+                <thead>
+                    <tr>
+                        <th>Endereço</th>
+                        <th>CEP</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let m of modelTable.data | filter:pesquisar">
+                        <td>{{ m.endereco }}</td>
+                        <td>{{ m.cep }}</td>
+                        <td>{{ m.bairro }}</td>
+                        <td>{{ m.cidade }}</td>
+                        <td>{{ m.estado }}</td>
+                        <td>
+                            <button routerLink="show/{{m.cep}}" style="margin-right: 5px;" nz-button nzType="default">
+                                <i nz-icon nzType="eye"></i>
+                            </button>
+                            <button routerLink="edit/{{m.id}}" style="margin-right: 5px;" nz-button nzType="default">
+                                <i nz-icon nzType="edit"></i>
+                            </button>
+                            <button (click)="delete(m.id)" nz-button nzType="default">
+                                <i nz-icon nzType="delete"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </ng-template>
+    </nz-card>
+    <ng-template #extraTemplate>
+        <button nz-button nzType="primary" routerLink="./store">Novo Endereço</button>
+        <button style="margin-left: 5px;" nz-button nzType="default" (click)="logout()">Sair</button>
+    </ng-template>
+</div>
